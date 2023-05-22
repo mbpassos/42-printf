@@ -12,54 +12,81 @@
 
 #include "ft_printf.h"
 
-int flag_conversion(char params, va_list args)
+int	ft_putchar(int c)
 {
-    int c;
-
-    c = 0;
-    if (params == '%')
-        c += write(1, &params, 1);
-    if (params == 'c')
-        c += ft_putchar(va_arg(args, int));
-    if (params == 's')
-        c += ft_putstr(va_arg(args, char *));
-    if (params == 'd' || params == 'i')
-        c += ft_putnbr(va_arg(args, int));
-    if (params == 'x' || params == 'X')
-        c += ft_hex_base(va_arg(args, unsigned int), params);
-    if (params == 'p')
-    {
-        c += write(1, "0x", 2);
-        c += ft_hex_base(va_arg(args, unsigned long long), 'x');
-    }
-    if (params == 'u')
-        c += ft_uns_dec_base(va_arg(args, unsigned int));
-    return (c);
+	write(1, &c, 1);
+	return (1);
 }
 
-int ft_printf(const char *params, ...)
+int	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+int flag_conversion(va_list args, const char format)
+{
+    int char_printed;
+
+    char_printed = 0;
+    if (format == '%')
+        char_printed += write(1, &format, 1);
+    if (format == 'c')
+        char_printed += ft_putchar(va_arg(args, int));
+    if (format == 's')
+        char_printed += ft_putstr(va_arg(args, char *));
+    if (format == 'd' || format == 'i')
+        char_printed += ft_putnbr(va_arg(args, int));
+    if (format == 'x' || format == 'X')
+        char_printed += ft_puthex(va_arg(args, unsigned int), format);
+    if (format == 'p')
+    {
+        char_printed += write(1, "0x", 2);
+        char_printed += ft_puthex(va_arg(args, unsigned long long), 'x');
+    }
+    if (format == 'u')
+        char_printed += ft_putunsigned(va_arg(args, unsigned int));
+    return (char_printed);
+}
+
+int ft_printf(const char *format, ...)
 {
     va_list args;
     size_t i;
-    int c;
+    int char_printed;
 
-    c = 0;
+    if (format == NULL)
+        return (-1);
+    char_printed = 0;
     i = 0;
-    va_start(args, params);
-    while (params[i])
+    va_start(args, format);
+    while (format[i])
     {
-        if (params[i] == '%')
+        if (format[i] == '%')
         {
             i++;
-            c += flag_conversion(params[i], args);
+            char_printed += flag_conversion(args, format[i]);
+            
         }
         else
         {
-            ft_putchar(params[i]);
-            c++;
+            ft_putchar(format[i]);
+            char_printed++;
         }
         i++;
     }
     va_end(args);
-    return c;
+    return (char_printed);
 }

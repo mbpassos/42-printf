@@ -12,13 +12,13 @@
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c	ft_print_utils.c
+SRC = 	ft_printf.c ft_int_dec_base.c ft_uns_dec_base.c ft_hex_base.c			
 
 OBJS = ${SRC:.c=.o}
 
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -gdwarf-4
 INCLUDE = -I .
 CL = ar -rc
 RL = ar -s
