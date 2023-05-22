@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbrito-p <mbrito-p@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/22 20:23:00 by mbrito-p          #+#    #+#             */
+/*   Updated: 2023/05/22 20:23:00 by mbrito-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <limits.h>
-#include "libft_walter/libft.h"
+# include <stdarg.h>
+# include <stdio.h>
+# include <unistd.h>
 
 int	ft_putnbr(int nb);
 int	ft_putchar(const char c);

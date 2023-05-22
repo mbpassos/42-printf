@@ -1,7 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mbrito-p <mbrito-p@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/22 20:22:41 by mbrito-p          #+#    #+#              #
+#    Updated: 2023/05/22 20:22:41 by mbrito-p         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c 
+SRC = ft_printf.c	ft_print_utils.c
 
 OBJS = ${SRC:.c=.o}
 
@@ -9,32 +20,24 @@ CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 INCLUDE = -I .
-MAKE = make -C
-LIBFT_PATH = libft
-LIBFT = ${LIBFT_PATH}/libft.a
-
+CL = ar -rc
+RL = ar -s
+	
 .o:.c
 		${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
 
-$(NAME): ${OBJS}
-		${MAKE} ${LIBFT_PATH} all
-		cp ${LIBFT} ${NAME}
-		ar rcs ${NAME} ${OBJS}
+$(NAME):		${OBJS}
+		${CL}	${NAME}	${OBJS}
+		${RL}	${NAME}
 
-all:	${NAME}
+all: ${NAME}
 
 clean:
-		${MAKE} ${LIBFT_PATH} clean
-		${RM} ${OBJS}
+	${RM} ${OBJS}
 
-fclean: clean
-		${MAKE} ${LIBFT_PATH} fclean
-		${RM} ${NAME}
-
-# bonus: all
+fclean:	clean
+	${RM}	${NAME}
 
 re: fclean all
 
-# .PHONY: all clean fclean re bonus
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re 
