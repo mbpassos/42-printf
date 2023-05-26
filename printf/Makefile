@@ -13,7 +13,8 @@
 NAME = libftprintf.a
 
 SRC = 	ft_printf.c	ft_print_single_char.c	ft_print_string.c \
-		ft_print_dec_base.c	ft_print_uns_dec_base.c ft_print_hex_base.c			
+		ft_print_dec_base.c	ft_print_uns_dec_base.c ft_print_hex_base.c \
+		ft_print_ptr.c			
 
 OBJS = ${SRC:.c=.o}
 

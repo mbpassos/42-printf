@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdint.h>
 # include "lib/libft.h"
 
 int	ft_putnbr(int n);
@@ -31,8 +32,14 @@ char    *ft_uitoa(unsigned int n);
 int ft_putunbr(unsigned int n);
 int ft_hex_len(unsigned int n);
 void    ft_put_hex(unsigned int n, const char format);
-int ft_putptr(uintptr_t ptr);
+int	ft_puthexptr(unsigned long n, int fmt);
+int	ft_print_pointer(void *ptr);
 int	ft_puthex(unsigned int num, const char format);
+int	ft_len_ptr(uintptr_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_put_ptr(uintptr_t n);
+int	ft_putptr(uintptr_t ptr);
+void	*ft_memset(void *s, int c, size_t n);
 int flag_conversion(va_list args, const char format);
 int ft_printf(const char *format, ...);
 

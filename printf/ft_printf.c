@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// uintptr_t is an unsigned integer type that is capable of storing a pointer value.
 #include "ft_printf.h"
 
 int flag_conversion(va_list args, const char format)
@@ -29,9 +30,7 @@ int flag_conversion(va_list args, const char format)
         char_printed += ft_puthex(va_arg(args, unsigned int), format);
     if (format == 'p')
     {
-        char_printed += write(1, "0x", 2);
-        char_printed += ft_puthex(va_arg(args, unsigned long long), 'x');
-        // char_printed += ft_putptr(va_arg(vl, uintptr_t));
+        char_printed += ft_print_pointer(va_arg(args, void *));
     }
     if (format == 'u')
         char_printed += ft_putunbr(va_arg(args, unsigned int));

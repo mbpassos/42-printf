@@ -16,7 +16,7 @@ char	*ft_get_char(char *s, unsigned int n, int len)
 {
 	while (n > 0)
 	{
-		s[len] = 48 + (number % 10);
+		s[len] = 48 + (n % 10);
 		len--;
 		n = n / 10;		
 	}
