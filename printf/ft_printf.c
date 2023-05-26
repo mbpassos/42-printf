@@ -12,30 +12,6 @@
 
 #include "ft_printf.h"
 
-int	ft_putchar(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
-}
-
 int flag_conversion(va_list args, const char format)
 {
     int char_printed;
@@ -55,9 +31,10 @@ int flag_conversion(va_list args, const char format)
     {
         char_printed += write(1, "0x", 2);
         char_printed += ft_puthex(va_arg(args, unsigned long long), 'x');
+        // char_printed += ft_putptr(va_arg(vl, uintptr_t));
     }
     if (format == 'u')
-        char_printed += ft_putunsigned(va_arg(args, unsigned int));
+        char_printed += ft_putunbr(va_arg(args, unsigned int));
     return (char_printed);
 }
 
