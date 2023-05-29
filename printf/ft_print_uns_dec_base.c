@@ -60,3 +60,14 @@ int	ft_putunbr(unsigned int n)
     }
     return (nbr_of_chars_printed);
 }
+
+// int main()
+// {
+//     unsigned int number = 123456;
+//
+//     int chars_printed = ft_putunbr(number);
+//     ft_printf("Number printed: %u\n", number);
+//     ft_printf("Number of characters printed: %d\n", chars_printed);
+//
+//     return 0;
+// }

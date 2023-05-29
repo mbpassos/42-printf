@@ -54,4 +54,20 @@ int	ft_puthex(unsigned int n, const char format)
     return ft_hex_len(n);
 }
 
-
+// int main(void)
+// {
+//     unsigned int number = 255;
+//     char format = 'x';
+//
+//     int hex_len = ft_hex_len(number);
+//     ft_printf("Hex length of %u: %d\n", number, hex_len);
+//
+//     ft_printf("Hex representation of %u (format: %c): ", number, format);
+//     ft_put_hex(number, format);
+//     ft_printf("\n");
+//
+//     int chars_printed = ft_puthex(number, format);
+//     ft_printf("\nNumber of characters printed: %d\n", chars_printed);
+//
+//     return 0;
+// }

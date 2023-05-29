@@ -17,3 +17,14 @@ int	ft_putchar(int c)
 	write(1, &c, 1);
 	return (1);
 }
+
+// int main()
+// {
+//     char c = 'A';
+
+//     int chars_printed = ft_putchar(c);
+//     ft_printf("Character printed: %c\n", c);
+//     ft_printf("Number of characters printed: %d\n", chars_printed);
+
+//     return 0;
+// }

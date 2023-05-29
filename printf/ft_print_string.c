@@ -29,3 +29,14 @@ int	ft_putstr(char *str)
 	}
 	return (i);
 }
+
+// int main()
+// {
+//     char *str = "Hello, World!";
+
+//     int chars_printed = ft_putstr(str);
+//     ft_printf("String printed: %s\n", str);
+//     ft_printf("Number of characters printed: %d\n", chars_printed);
+
+//     return 0;
+// }

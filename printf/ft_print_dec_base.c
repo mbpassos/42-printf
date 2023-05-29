@@ -77,3 +77,20 @@ int	ft_putnbr(int n)
 	free(final_number);
 	return (len);	
 }
+
+// int main()
+// {
+//     int number = 12345;
+//
+//     int len = ft_get_len(number);
+//     ft_printf("Length of %d: %d\n", number, len);
+//
+//     char* str = ft_itoa(number);
+//     ft_printf("Integer to string conversion: %s\n", str);
+//     free(str);
+//
+//     int chars_printed = ft_putnbr(number);
+//     ft_printf("\nNumber of characters printed: %d\n", chars_printed);
+//
+//     return 0;
+// }
