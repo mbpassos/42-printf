@@ -14,6 +14,14 @@
 // its typical representation would be something like 0x7ffd83af4a40. Here, 
 // the "0x" prefix indicates that the value is in hexadecimal format, and 
 // the following digits represent the actual memory address.
+// memset fills a block of memory with a specific value
+// calloc allocates dinamically the memory of an array of nmemb elemnts each 
+// ze bytes long. The reason for removing null bytes is to ensure that the 
+// resulting string representation of the address doesn't have any leading zeros. 
+// The address is converted to hexadecimal representation, and leading zeros 
+// in hexadecimal can be misleading or unnecessary. By removing null bytes, 
+// the resulting string will start with the actual hexadecimal digits of 
+// the address.
 #include "ft_printf.h"
 
 void	*ft_memset(void *s, int c, size_t n)
@@ -41,58 +49,70 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (ptr);
 }
 
-/*Remove null bytes from the begining of the adress*/
-char	*clean_adress(char *adress)
+/*Remove null bytes from the begining of the address*/
+char	*clean_address(char *address)
 {
 	int		i;
 	int		k;
 	int		j;
-	char	*c_adress;
+	char	*cleaned_address;
 
 	i = 19;
 	k = 0;
 	j = 0;
-	c_adress = ft_calloc(sizeof(char), 19);
+	cleaned_address = (char *)ft_calloc(sizeof(char), 19);
 	while (j < 19)
 	{
-		if (adress[j])
+		if (address[j])
 		{
-			c_adress[k++] = adress[j];
+			cleaned_address[k++] = address[j];
 			i++;
 		}
 		j++;
 	}
-	free(adress);
-	return (c_adress);
+	free(address);
+	return (cleaned_address);
 }
 
-/*Convert pointer adress to decimal and then to hexadecimal
+/*Convert pointer address to decimal and then to hexadecimal
 and finally convert it to a string*/
 int	ft_print_pointer(void *ptr)
 {
-	uintptr_t	d_adress;
-	char		*adress;
-	char		*c_adress;
+	uintptr_t	decimal_address;
+	char		*address;
+	char		*cleaned_address;
 	int			w_bytes;
 	int			i;
 
-	d_adress = (uintptr_t)ptr;
-	if (!d_adress)
+	decimal_address = (uintptr_t)ptr;
+	if (!decimal_address)
 		return (ft_putstr("(nil)"));
-	adress = ft_calloc(sizeof(char), 19);
-	if (!adress)
+	address = (char *)ft_calloc(sizeof(char), 19);
+	if (!address)
 		return (0);
 	i = 18;
-	while (d_adress > 0 && i > 1)
+	while (decimal_address > 0 && i > 1)
 	{
-		adress[i] = "0123456789abcdef"[d_adress % 16];
-		d_adress /= 16;
+		address[i] = "0123456789abcdef"[decimal_address % 16];
+		decimal_address /= 16;
 		i--;
 	}
-	adress[i--] = 'x';
-	adress[i] = '0';
-	c_adress = clean_adress(adress);
-	w_bytes = ft_putstr(c_adress);
-	free(c_adress);
+	address[i--] = 'x';
+	address[i] = '0';
+	cleaned_address = clean_address(address);
+	w_bytes = ft_putstr(cleaned_address);
+	free(cleaned_address);
 	return (w_bytes);
 }
+
+// int	main()
+// {
+// 	int value = 42;
+// 	int *ptr = &value;
+
+// 	printf("Printing pointer: ");
+// 	ft_print_pointer(ptr);
+// 	printf("\n");
+
+// 	return 0;
+// }
