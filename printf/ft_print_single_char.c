@@ -6,7 +6,7 @@
 /*   By: mbrito-p <mbrito-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 18:39:58 by mbrito-p          #+#    #+#             */
-/*   Updated: 2023/05/25 18:39:58 by mbrito-p         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:24:04 by mbrito-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	ft_putchar(int c)
 // int main()
 // {
 //     char c = 'A';
-
 //     int chars_printed = ft_putchar(c);
 //     ft_printf("Character printed: %c\n", c);
 //     ft_printf("Number of characters printed: %d\n", chars_printed);
-
 //     return 0;
 // }

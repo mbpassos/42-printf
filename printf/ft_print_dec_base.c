@@ -6,7 +6,7 @@
 /*   By: mbrito-p <mbrito-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:45:36 by mbrito-p          #+#    #+#             */
-/*   Updated: 2023/05/25 20:45:36 by mbrito-p         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:53:42 by mbrito-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ char	*ft_get_char(char *s, unsigned int n, int len)
 	{
 		s[len] = 48 + (n % 10);
 		len--;
-		n = n / 10;		
+		n = n / 10;
 	}
 	return (s);
 }
 
 int	ft_get_len(int n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (n <= 0)
@@ -35,16 +35,15 @@ int	ft_get_len(int n)
 		len++;
 		n = n / 10;
 	}
-	return (len);
-	
+	return (s);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*s;
-	int	len;
-	unsigned int	result;
-	int	sign;
+	int		len;
+	int		result;
+	int		sign;
 
 	sign = 1;
 	len = ft_get_len(n);
@@ -61,23 +60,22 @@ char	*ft_itoa(int n)
 		result = n * -1;
 		s[0] = '-';
 	}
-	else	
+	else
 		result = n;
 	s = ft_get_char(s, result, len);
-	return (s);	
+	return (s);
 }
 
 int	ft_putnbr(int n)
 {
-	int	len;
-	char *final_number;
+	int		len;
+	char	*final_number;
 
 	final_number = ft_itoa(n);
 	len = ft_putstr(final_number);
 	free(final_number);
-	return (len);	
+	return (len);
 }
-
 // int main()
 // {
 //     int number = 12345;

@@ -6,7 +6,7 @@
 /*   By: mbrito-p <mbrito-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 23:15:07 by mbrito-p          #+#    #+#             */
-/*   Updated: 2023/05/25 23:15:07 by mbrito-p         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:21:02 by mbrito-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 // memset fills a block of memory with a specific value
 // calloc allocates dinamically the memory of an array of nmemb elemnts each 
 // ze bytes long. The reason for removing null bytes is to ensure that the 
-// resulting string representation of the address doesn't have any leading zeros. 
-// The address is converted to hexadecimal representation, and leading zeros 
-// in hexadecimal can be misleading or unnecessary. By removing null bytes, 
-// the resulting string will start with the actual hexadecimal digits of 
-// the address.
+// resulting string representation of the address doesn't have any leading 
+// zeros. The address is converted to hexadecimal representation, and leading 
+// zeros in hexadecimal can be misleading or unnecessary. By removing null 
+// bytes, the resulting string will start with the actual hexadecimal digits 
+// of the address.
 #include "ft_printf.h"
 
 void	*ft_memset(void *s, int c, size_t n)
@@ -49,7 +49,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (ptr);
 }
 
-/*Remove null bytes from the begining of the address*/
 char	*clean_address(char *address)
 {
 	int		i;
@@ -74,8 +73,6 @@ char	*clean_address(char *address)
 	return (cleaned_address);
 }
 
-/*Convert pointer address to decimal and then to hexadecimal
-and finally convert it to a string*/
 int	ft_print_pointer(void *ptr)
 {
 	uintptr_t	decimal_address;
@@ -109,10 +106,8 @@ int	ft_print_pointer(void *ptr)
 // {
 // 	int value = 42;
 // 	int *ptr = &value;
-
 // 	printf("Printing pointer: ");
 // 	ft_print_pointer(ptr);
 // 	printf("\n");
-
 // 	return 0;
 // }
