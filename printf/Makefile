@@ -40,12 +40,8 @@ clean:
 fclean:	clean
 	${RM}	${NAME}
 
-tclean: clean
-	${RM} teste
 
 re: fclean all
 
-teste:
-		${CC} ${CFLAGS} ${INCLUDE} main.c ${NAME} -o teste
 
 .PHONY: all clean fclean re 

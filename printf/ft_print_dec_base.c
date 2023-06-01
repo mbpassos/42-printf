@@ -35,7 +35,7 @@ int	ft_get_len(int n)
 		len++;
 		n = n / 10;
 	}
-	return (s);
+	return (len);
 }
 
 char	*ft_itoa(int n)
